@@ -15,6 +15,7 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
 
   TextEditingController postController = TextEditingController();
+
   bool loading = false;
   final databaseRef = FirebaseDatabase.instance.ref('Post');
 
@@ -59,10 +60,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 setState(() {
                   loading = true;
                 });
-                
 
-                databaseRef.child(DateTime.now().microsecondsSinceEpoch.toString()).set({
-                  "id" : DateTime.now().microsecondsSinceEpoch.toString(),
+                String id = DateTime.now().microsecondsSinceEpoch.toString();
+
+                databaseRef.child(id).set({
+                  "id" : id,
                   "title": postController.text.toString(),
 
                 }).then((value){
