@@ -6,6 +6,8 @@ import 'package:firebase_learning/UI/auth/login.dart';
 import 'package:firebase_learning/UI/posts/post_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../UI/firestore/firestore_list_screen.dart';
+
 class LoadingService{
 
   void isLogin(BuildContext context){
@@ -15,7 +17,7 @@ class LoadingService{
 
     if(user != null){
       Timer(const Duration(seconds: 3), (){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const PostScreen()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const FireStoreScreen()));
       });
     }else{
       Timer(const Duration(seconds: 3), (){
